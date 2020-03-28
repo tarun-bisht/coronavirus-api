@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=yes">
+    <meta name="description" content="Get Current status of Corona virus in India in json format.
+    created by scraping from ministry of health and family welfare https://www.mohfw.gov.in ,This API sends status of Corona Virus Spread in Indian States in JSon format.">
+    <meta name="keyword" content="Corona Virus Json API, Corona Virus Status API, Corona Virus status India">
+    <meta name="author" content="Tarun Bisht">
+    <title>Tarun Bisht | Corona Virus Status API For India</title>
+  </head>
+  <body>
+    <h1>Corona Virus Status API For India</h1>
+    <h4>by: <a href="https://tarunbisht.com">Tarun Bisht</a></h4>
+    <section>
+        {% for link in links %}
+            <center>
+                <h3><a href="{{ link[1] }}">{{ link[0] }}</a></h3>
+            </center>
+        {% endfor %}
+    </section>
+    <section>
+        <center><h4>Please Do not Run (Get Latest data) /scrape-it link lot of times.</h4></center>
+    </section>
+  </body>
+</html>
