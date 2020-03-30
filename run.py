@@ -26,15 +26,15 @@ def scape_it():
         for heading in headings:
             file.write(f"{heading},")
         file.write("\n")
-        for row  in data[0:-1]:
+        for row  in data:
             for column in row:
                 file.write(f"{column},")
             file.write("\n")
     print("File Written Success")
-    return redirect(url_for('index'))
+    return redirect("/")
 
 @app.route("/confirm-cases")
-@cache.cached(timeout=4800, key_prefix='confirm_cases')
+@cache.cached(timeout=3600, key_prefix='confirm_cases')
 def confirm_cases():
     data=None
     with open("state_cases.csv","r") as file:
@@ -42,10 +42,10 @@ def confirm_cases():
         total=read_csv[-1]
         states=read_csv[1:-1]
         data=[[row[1],int(row[2])+int(row[3])] for row in states]
-    return jsonify([["Total",int(total[1].strip("#"))+int(total[2])]]+data)
+    return jsonify([["Total",int(total[1])+int(total[2])]]+data)
 
 @app.route("/confirm-cases-indian")
-@cache.cached(timeout=4800, key_prefix='confirm-cases-indian')
+@cache.cached(timeout=3600, key_prefix='confirm-cases-indian')
 def confirm_cases_indian():
     data=None
     with open("state_cases.csv","r") as file:
@@ -54,10 +54,10 @@ def confirm_cases_indian():
         total=read_csv[-1]
         states=read_csv[1:-1]
         data=[[row[1],row[2]] for row in states]
-    return jsonify([["Total",total[1].strip("#")]]+data)
+    return jsonify([["Total",total[1]]]+data)
 
 @app.route("/confirm-cases-foreign")
-@cache.cached(timeout=4800, key_prefix='confirm-cases-foreign')
+@cache.cached(timeout=3600, key_prefix='confirm-cases-foreign')
 def confirm_cases_foreign():
     data=None
     with open("state_cases.csv","r") as file:
@@ -69,7 +69,7 @@ def confirm_cases_foreign():
     return jsonify([["Total",total[2]]]+data)
 
 @app.route("/confirm-cured")
-@cache.cached(timeout=4800, key_prefix='confirm-cured')
+@cache.cached(timeout=3600, key_prefix='confirm-cured')
 def confirm_cured():
     data=None
     with open("state_cases.csv","r") as file:
@@ -81,7 +81,7 @@ def confirm_cured():
     return jsonify([["Total",total[3]]]+data)
 
 @app.route("/confirm-death")
-@cache.cached(timeout=4800, key_prefix='confirm-death')
+@cache.cached(timeout=3600, key_prefix='confirm-death')
 def confirm_death():
     data=None
     with open("state_cases.csv","r") as file:
