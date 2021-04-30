@@ -60,7 +60,7 @@ srsly==1.0.1
 thinc==7.3.1
 tqdm==4.42.1
 uritemplate==3.0.0
-urllib3==1.25.7
+urllib3==1.25.8
 wasabi==0.6.0
 Werkzeug==0.16.0
 WTForms==2.2.1
